@@ -42,6 +42,13 @@ resource "google_service_account" "default" {
   display_name = "${var.name}-scheduler-sa"
 }
 
+resource "google_project_iam_member" "run_invoker" {
+  project = var.project_id
+
+  role   = "roles/run.invoker"
+  member = "serviceAccount:${google_service_account.default.email}"
+}
+
 data "google_cloud_run_service" "default" {
   depends_on = [
     module.function2
