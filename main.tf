@@ -36,12 +36,18 @@ module "function2" {
 }
 
 resource "google_service_account" "default" {
-  account_id   = "${var.name}-scheduler-sa"
+  project      = var.project_id
+  account_id   = substr("${var.name}-scheduler-sa", 0, 28)
   description  = "Cloud Scheduler service account; used to trigger scheduled Cloud Run jobs."
   display_name = "${var.name}-scheduler-sa"
 }
 
 data "google_cloud_run_service" "default" {
+  depends_on = [
+    module.function2
+  ]
+  project = var.project_id
+
   name     = var.name
   location = var.location
 }

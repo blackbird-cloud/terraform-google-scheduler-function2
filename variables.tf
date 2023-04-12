@@ -140,7 +140,7 @@ variable "bucket_name" {
 
 variable "create_bucket" {
   type        = bool
-  default     = true
+  default     = false
   description = "Whether to create a new bucket or use an existing one. If false, `bucket_name` should reference the name of the alternate bucket to use."
 }
 
