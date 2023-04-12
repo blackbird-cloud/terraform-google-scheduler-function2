@@ -42,7 +42,7 @@
 | <a name="input_bucket_labels"></a> [bucket\_labels](#input\_bucket\_labels) | A set of key/value label pairs to assign to the function source archive bucket. | `map(string)` | `{}` | no |
 | <a name="input_bucket_name"></a> [bucket\_name](#input\_bucket\_name) | The name to apply to the bucket. Will default to a string of the function name. | `string` | `""` | no |
 | <a name="input_build_environment_variables"></a> [build\_environment\_variables](#input\_build\_environment\_variables) | A set of key/value environment variable pairs available during build time. | `map(string)` | `{}` | no |
-| <a name="input_create_bucket"></a> [create\_bucket](#input\_create\_bucket) | Whether to create a new bucket or use an existing one. If false, `bucket_name` should reference the name of the alternate bucket to use. | `bool` | `true` | no |
+| <a name="input_create_bucket"></a> [create\_bucket](#input\_create\_bucket) | Whether to create a new bucket or use an existing one. If false, `bucket_name` should reference the name of the alternate bucket to use. | `bool` | `false` | no |
 | <a name="input_description"></a> [description](#input\_description) | The description of the function. | `string` | `"Processes events."` | no |
 | <a name="input_entry_point"></a> [entry\_point](#input\_entry\_point) | The name of a method in the function source which will be invoked when the function is executed. | `string` | n/a | yes |
 | <a name="input_environment_variables"></a> [environment\_variables](#input\_environment\_variables) | A set of key/value environment variable pairs to assign to the function. | `map(string)` | `{}` | no |
