@@ -65,19 +65,19 @@ resource "google_cloud_scheduler_job" "scheduler" {
   paused      = var.paused
   region      = var.scheduler_region
 
-  schedule = var.schedule # "0 3 * * *"
+  schedule = var.schedule
 
-  time_zone        = var.time_zone # "Europe/Amsterdam"
+  time_zone        = var.time_zone
   project          = var.project_id
-  attempt_deadline = var.attempt_deadline # "600s"
+  attempt_deadline = var.attempt_deadline
 
   retry_config {
     retry_count = var.retry_count
   }
   http_target {
-    http_method = "POST"
+    http_method = var.scheduler_http_method
     uri         = data.google_cloud_run_service.default.status[0].url
-
+    body        = var.scheduler_http_body
     oidc_token {
       service_account_email = google_service_account.default.email
     }

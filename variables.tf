@@ -210,3 +210,16 @@ variable "retry_count" {
   type        = number
   description = " (Optional) The number of attempts that the system will make to run a job using the exponential backoff procedure described by maxDoublings. Values greater than 5 and negative values are not allowed."
 }
+
+variable "scheduler_http_method" {
+  type        = string
+  description = "(Optional) Which HTTP method to use for the Cloud Scheduler request."
+  default     = "POST"
+}
+
+variable "scheduler_http_body" {
+  type        = string
+  default     = null
+  description = "(Optional) Cloud Scheduler HTTP request body. A request body is allowed only if the HTTP method is POST or PUT. It will result in invalid argument error to set a body on a job with an incompatible HttpMethod. A base64-encoded string."
+}
+
