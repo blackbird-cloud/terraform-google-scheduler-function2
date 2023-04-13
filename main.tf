@@ -80,6 +80,7 @@ resource "google_cloud_scheduler_job" "scheduler" {
     body        = var.scheduler_http_body
     oidc_token {
       service_account_email = google_service_account.default.email
+      audience              = data.google_cloud_run_service.default.status[0].url
     }
   }
 }
