@@ -1,4 +1,3 @@
-<!-- BEGIN_TF_DOCS -->
 [![blackbird-logo](https://raw.githubusercontent.com/blackbird-cloud/terraform-module-template/main/.config/logo_simple.png)](https://blackbird.cloud)
 
 ## Requirements
@@ -7,14 +6,14 @@
 |------|---------|
 | <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >= 0.1 |
 | <a name="requirement_archive"></a> [archive](#requirement\_archive) | >= 2.3 |
-| <a name="requirement_google"></a> [google](#requirement\_google) | >= 4.11, < 5.0 |
+| <a name="requirement_google"></a> [google](#requirement\_google) | >= 4.61 |
 | <a name="requirement_null"></a> [null](#requirement\_null) | >= 3.2 |
 
 ## Providers
 
 | Name | Version |
 |------|---------|
-| <a name="provider_google"></a> [google](#provider\_google) | >= 4.11, < 5.0 |
+| <a name="provider_google"></a> [google](#provider\_google) | 4.61.0 |
 
 ## Modules
 
@@ -27,6 +26,7 @@
 | Name | Type |
 |------|------|
 | [google_cloud_scheduler_job.scheduler](https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/cloud_scheduler_job) | resource |
+| [google_project_iam_member.run_invoker](https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/project_iam_member) | resource |
 | [google_service_account.default](https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/service_account) | resource |
 | [google_cloud_run_service.default](https://registry.terraform.io/providers/hashicorp/google/latest/docs/data-sources/cloud_run_service) | data source |
 
@@ -62,6 +62,9 @@
 | <a name="input_retry_count"></a> [retry\_count](#input\_retry\_count) | (Optional) The number of attempts that the system will make to run a job using the exponential backoff procedure described by maxDoublings. Values greater than 5 and negative values are not allowed. | `number` | n/a | yes |
 | <a name="input_runtime"></a> [runtime](#input\_runtime) | The runtime in which the function will be executed. | `string` | n/a | yes |
 | <a name="input_schedule"></a> [schedule](#input\_schedule) | (Optional) Describes the schedule on which the job will be executed. | `string` | n/a | yes |
+| <a name="input_scheduler_http_body"></a> [scheduler\_http\_body](#input\_scheduler\_http\_body) | (Optional) Cloud Scheduler HTTP request body. A request body is allowed only if the HTTP method is POST or PUT. It will result in invalid argument error to set a body on a job with an incompatible HttpMethod. A base64-encoded string. | `string` | `null` | no |
+| <a name="input_scheduler_http_headers"></a> [scheduler\_http\_headers](#input\_scheduler\_http\_headers) | (Optional) Cloud Scheduler HTTP request headers. This map contains the header field names and values. Headers can be set when the job is created. | `map(string)` | `{}` | no |
+| <a name="input_scheduler_http_method"></a> [scheduler\_http\_method](#input\_scheduler\_http\_method) | (Optional) Which HTTP method to use for the Cloud Scheduler request. | `string` | `"POST"` | no |
 | <a name="input_scheduler_region"></a> [scheduler\_region](#input\_scheduler\_region) | The region in which the scheduler resources will be applied, not available in all regions. | `string` | n/a | yes |
 | <a name="input_secret_environment_variables"></a> [secret\_environment\_variables](#input\_secret\_environment\_variables) | A list of maps which contains key, project\_id, secret\_name (not the full secret id) and version to assign to the function as a set of secret environment variables. | `list(map(string))` | `[]` | no |
 | <a name="input_service_account_email"></a> [service\_account\_email](#input\_service\_account\_email) | The service account to run the function as. | `string` | `""` | no |
@@ -87,4 +90,3 @@ Checkout our other :point\_right: [terraform modules](https://registry.terraform
 ## Copyright
 
 Copyright © 2017-2023 [Blackbird Cloud](https://blackbird.cloud)
-<!-- END_TF_DOCS -->

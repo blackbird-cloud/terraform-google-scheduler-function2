@@ -223,3 +223,8 @@ variable "scheduler_http_body" {
   description = "(Optional) Cloud Scheduler HTTP request body. A request body is allowed only if the HTTP method is POST or PUT. It will result in invalid argument error to set a body on a job with an incompatible HttpMethod. A base64-encoded string."
 }
 
+variable "scheduler_http_headers" {
+  type        = map(string)
+  description = "(Optional) Cloud Scheduler HTTP request headers. This map contains the header field names and values. Headers can be set when the job is created."
+  default     = {}
+}

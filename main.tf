@@ -78,6 +78,7 @@ resource "google_cloud_scheduler_job" "scheduler" {
     http_method = var.scheduler_http_method
     uri         = data.google_cloud_run_service.default.status[0].url
     body        = var.scheduler_http_body
+    headers     = var.scheduler_http_headers
     oidc_token {
       service_account_email = google_service_account.default.email
       audience              = data.google_cloud_run_service.default.status[0].url
