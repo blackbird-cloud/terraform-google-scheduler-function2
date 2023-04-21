@@ -79,6 +79,7 @@
 
 | Name | Description |
 |------|-------------|
+| <a name="output_cloud_run_service"></a> [cloud\_run\_service](#output\_cloud\_run\_service) | The google cloud run service. |
 | <a name="output_function2"></a> [function2](#output\_function2) | The google cloud function2. |
 
 ## About
